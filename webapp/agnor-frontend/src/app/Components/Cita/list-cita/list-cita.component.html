@@ -1,0 +1,99 @@
+&nbsp;
+<div class="container-fluid">
+<h1>Citas  <span><button type="button" class="btn btn-primary" [routerLink]="['/cita/formCita']"><fa-icon [icon]="faCirclePlus" size="lg"></fa-icon>&nbsp;&nbsp;Nueva Cita</button></span> </h1>  
+
+  <mat-form-field>
+    <mat-label>Filtro por Titulo</mat-label>
+    <input matInput type="text" [(ngModel)]="filterValue"
+    (input)="findByTitulo(filterValue)" placeholder="Buscar Cita">
+</mat-form-field>
+
+  <mat-table [dataSource]="dataSource.items" class="table table-hover table table-bordered fs-4" matSort id="clienteTabla">
+
+    <!--- Note that these columns can be defined in any order.
+          The actual rendered columns are set as a property on the row definition" -->
+  
+    <!-- Position Column -->
+    <ng-container matColumnDef="id">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> No. </th>
+      <td mat-cell *matCellDef="let element" class="fw-semibold"> {{element.id}} </td>
+    </ng-container>
+  
+    <!-- Name Column -->
+    <ng-container matColumnDef="titulo">
+      <th mat-header-cell *matHeaderCellDef> Titulo </th>
+      <td mat-cell *matCellDef="let element"> {{element.titulo}}</td>
+    </ng-container>
+  
+    <!-- Weight Column -->
+    <ng-container matColumnDef="descripcion">
+      <th mat-header-cell *matHeaderCellDef> Descripcion </th>
+      <td mat-cell *matCellDef="let element"> {{element.descripcion}} </td>
+    </ng-container>
+  
+    <!-- Symbol Column -->
+    <ng-container matColumnDef="fecha">
+      <th mat-header-cell *matHeaderCellDef> Fecha </th>
+      <td mat-cell *matCellDef="let element"> {{element.fecha}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="estado">
+      <th mat-header-cell *matHeaderCellDef> Estado</th>
+      <td mat-cell *matCellDef="let element"> {{element.estado}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="grupo">
+      <th mat-header-cell *matHeaderCellDef> Grupo </th>
+      <td mat-cell *matCellDef="let element"> {{element.grupo}} </td>
+    </ng-container>
+
+    <!-- <ng-container matColumnDef="tipodecita">
+      <th mat-header-cell *matHeaderCellDef> Tipo de Cita </th>
+      <td mat-cell *matCellDef="let element"> {{element.tipodecita}} </td>
+    </ng-container> -->
+
+    <ng-container matColumnDef="operaciones"stickyEnd>
+      <th mat-header-cell *matHeaderCellDef> Operaciones </th>
+      <td mat-cell *matCellDef="let element"> 
+        <div class="btn-group me-2 " role="group" aria-label="Second group">
+          <button type="button" class="btn btn-success rounded-pill " data-bs-toggle="modal" data-bs-target="#detallesModal" (click)="getCita(element.id)"><fa-icon [icon]="faMagnifyingGlassPlus" size="lg"></fa-icon></button>
+          <button type="button" class="btn btn-info rounded-pill " [routerLink]="['/cliente/formCliente']"><fa-icon [icon]="faPen" size="lg"></fa-icon></button>
+          <button type="button" class="btn btn-danger rounded-pill " (click)="deleteCita(element.id)"><fa-icon [icon]="faTrash" size="lg"></fa-icon></button>
+        </div>
+      </td>
+    </ng-container>
+  
+    <tr mat-header-row *matHeaderRowDef="displayedColumns" ></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+  </mat-table>
+  <mat-paginator 
+  [length]="dataSource.meta.totalItems" 
+        [pageSize]="dataSource.meta.itemsPerPage" 
+        [pageSizeOptions]="[5,10,25,100]"
+        (page)="pageEvent = $event; onPaginateChange($event)"
+        showFirstLastButtons>
+</mat-paginator>
+</div>
+<div class="modal fade" id="detallesModal" tabindex="-1" aria-labelledby="detallesModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-xl">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="detallesModalLabel">Cita de: <b>{{cliente.nombre}} {{cliente.apellidos}}</b> con Asunto: <b>{{cita.titulo}}</b></h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <ul class="list-group list-group-flush">
+          <li class="list-group-item">{{cita.direccioncit}}</li>
+          <li class="list-group-item">{{cita.titulo}}</li>
+          <li class="list-group-item">{{cita.grupo}}</li>
+          <li class="list-group-item">{{cita.descripcion}}</li>
+          <li class="list-group-item">{{cliente.nombre}} {{cliente.apellidos}}</li>
+        </ul>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,22 @@
+-->NestJS
+nest g controller citas
+nest g service citas
+nest g module citas
+
+npm run start:dev
+
+-->Angular
+ng g c Components/Cliente/list 
+ng g c Components/Cliente/form
+ng g s Components/Cliente/cliente
+
+ng serve
+
+
+--> GitHub
+
+git add .  -->escaneo todo
+
+ git commit -m "ACTUALIZACION VIERNES 08-JUL-2022"
+
+git push -u origin main

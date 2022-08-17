@@ -1,0 +1,280 @@
+<br>
+<h1>Formulario para Cliente</h1>
+<br>
+<div class="container">
+    <form [formGroup]="clienteForm" (ngSubmit)="edit ? updateCliente() : submitCliente()">
+        <mat-grid-list [cols]="breakpoint" rowHeight="2:0.5" (window:resize)="onResize($event)">
+            <mat-grid-tile>
+                <mat-form-field>
+                    <mat-label>Via de Contacto</mat-label>
+                    <select matSelect matNativeControl formControlName="clasificacion">
+                        <option value="Llamada entrante -Celular" selected>Llamada entrante -Celular</option>
+                        <option value="Llamada entrante -Oficina">Llamada entrante -Oficina</option>
+                        <option value="Llamada al contacto">Llamada al contacto</option>
+                        <option value="Correo Electronico">Correo Electronico</option>
+                        <option value="Whatsapp">Whatsapp</option>
+                        <option value="Facebook">Facebook</option>
+                        <option value="Página Web">Página Web</option>
+                        <option value="Inmuebles24">Inmuebles24</option>
+                        <option value="Vivanuncios">Vivanuncios</option>
+                        <option value="Lamudi">Lamudi</option>
+                        <option value="Otros">Otros</option>
+                    </select>
+                    <div *ngIf="submitted && f['clasificacion'].errors">
+                        <mat-error *ngIf="f['clasificacion'].errors['required']">Este campo es obligatorio</mat-error>
+                    </div>
+                </mat-form-field>
+            </mat-grid-tile>
+            <mat-grid-tile>
+                <mat-form-field>
+                    <mat-label>Clasificación/Estatus del contacto</mat-label>
+                    <select matSelect matNativeControl formControlName="estado">
+                        <option value="Prospecto">Prospecto</option>
+                        <option value="Cliente">Cliente</option>
+                        <option value="Cita">Cita</option>
+                        <option value="Seguimiento">Seguimiento</option>
+                        <option value="Rechazado">Rechazado</option>
+                        <option value="Lista negra">Lista negra</option>
+                        <option value="Negociación">Negociación</option>
+                        <option value="No interesado">No interesado</option>
+                        <option value="Asesor inmobiliario">Asesor inmobiliario</option>
+                        <option value="Cambio de propiedad">Cambio de propiedad</option>
+                        <option value="Venta concretada">Venta concretada</option>
+                        <option value="Enfriado">Enfriado</option>
+                        <option value="Otros">Otros</option>
+                    </select>
+                    <div *ngIf="submitted && f['estado'].errors">
+                        <mat-error *ngIf="f['estado'].errors['required']">Este campo es obligatorio</mat-error>
+                    </div>
+                </mat-form-field>
+            </mat-grid-tile>
+            <mat-grid-tile>
+                <mat-form-field>
+                    <mat-label for="fechaentrada">Fecha de primer contacto</mat-label>
+                    <input matInput [matDatepicker]="picker" formControlName="fechaentrada">
+                    <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                    <mat-datepicker #picker></mat-datepicker>
+                    <div *ngIf="submitted && f['fechaentrada'].errors">
+                        <mat-error *ngIf="f['fechaentrada'].errors['required']">Este campo es obligatorio</mat-error>
+                    </div>
+                </mat-form-field>
+            </mat-grid-tile>
+            <mat-grid-tile>
+                <mat-form-field>
+                    <mat-label>Edad</mat-label>
+                    <input matInput matNativeControl formControlName="edad" type="number">
+                    <div *ngIf="submitted && f['edad'].errors">
+                        <mat-error *ngIf="f['edad'].errors['required']">Este campo es obligatorio</mat-error>
+                    </div>
+                </mat-form-field>
+            </mat-grid-tile>
+        </mat-grid-list>
+
+        <br>
+
+        <mat-grid-list [cols]="breakpoint" rowHeight="2:0.5" (window:resize)="onResize($event)">
+            <mat-grid-tile>
+                <mat-form-field>
+                    <mat-label for="nombre">Nombre</mat-label>
+                    <input matInput matNativeControl type="text" class="form-control" name="nombre" id="nombre"
+                        formControlName="nombre">
+                    <div *ngIf="submitted && f['nombre'].errors">
+                        <mat-error *ngIf="f['nombre'].errors['required']">Este campo es obligatorio</mat-error>
+                    </div>
+                </mat-form-field>
+            </mat-grid-tile>
+            <mat-grid-tile>
+                <mat-form-field>
+                    <mat-label>Apellidos</mat-label>
+                    <input matInput matNativeControl formControlName="apellidos">
+                    <div *ngIf="submitted && f['apellidos'].errors">
+                        <mat-error *ngIf="f['apellidos'].errors['required']">Este campo es obligatorio</mat-error>
+                    </div>
+                </mat-form-field>
+            </mat-grid-tile>
+            
+            <mat-grid-tile>
+                <mat-form-field>
+                    <mat-label>Telefono Celular</mat-label>
+                    <input matInput matNativeControl formControlName="telefono1" type="number">
+                    <div *ngIf="submitted && f['telefono1'].errors">
+                        <mat-error *ngIf="f['telefono1'].errors['required']">Este campo es obligatorio</mat-error>
+                    </div>
+                </mat-form-field>
+            </mat-grid-tile>
+            <mat-grid-tile>
+                <mat-form-field>
+                    <mat-label for="telefono2">Telefono Casa</mat-label>
+                    <input matInput matNativeControl formControlName="telefono2" type="number">
+                    <div *ngIf="submitted && f['telefono2'].errors">
+                        <mat-error *ngIf="f['telefono2'].errors['required']">Este campo es obligatorio</mat-error>
+                    </div>
+                </mat-form-field>
+            </mat-grid-tile>
+        </mat-grid-list>
+
+        <br>
+
+        <mat-grid-list [cols]="breakpoint" rowHeight="2:0.5" (window:resize)="onResize($event)">
+            <mat-grid-tile>
+                <mat-form-field>
+                    <mat-label>Correo</mat-label>
+                    <input matInput matNativeControl formControlName="correo">
+                    <div *ngIf="submitted && f['correo'].errors">
+                        <mat-error *ngIf="f['correo'].errors['required']">Este campo es obligatorio</mat-error>
+                    </div>
+                </mat-form-field>
+            </mat-grid-tile>
+            <mat-grid-tile>
+                <mat-form-field>
+                    <mat-label for="departamento">Medio Publicitario</mat-label>
+                    <select matSelect matNativeControl formControlName="departamento">
+                        <option value="Inmuebles24">Inmuebles24</option>
+                        <option value="Vivanuncios">Vivanuncios</option>
+                        <option value="Lamudi">Lamudi</option>
+                        <option value="Facebook">Facebook</option>
+                        <option value="Cliente">Cliente</option>
+                        <option value="Whatsapp">Whatsapp</option>
+                        <option value="Instagram">Instagram</option>
+                        <option value="Lona">Lona</option>
+                        <option value="Referido">Referido</option>
+                        <option value="Gallardete">Gallardete</option>
+                        <option value="Página Web">Página Web</option>
+                        <option value="Otros">Otros</option>
+                    </select>
+                    <div *ngIf="submitted && f['departamento'].errors">
+                        <mat-error *ngIf="f['departamento'].errors['required']">Este campo es obligatorio</mat-error>
+                    </div>
+                </mat-form-field>
+            </mat-grid-tile>
+            <mat-grid-tile>
+                <mat-form-field>
+                    <mat-label for="tipoanuncio">Detalle del medio Publicitario</mat-label>
+                    <input matInput matNativeControl formControlName="tipoanuncio">
+                    <div *ngIf="submitted && f['tipoanuncio'].errors">
+                        <mat-error *ngIf="f['tipoanuncio'].errors['required']">Este campo es obligatorio</mat-error>
+                    </div>
+                </mat-form-field>
+            </mat-grid-tile>
+            <mat-grid-tile>
+                <mat-form-field>
+                    <mat-label>Forma de pago</mat-label>
+                    <select matSelect matNativeControl formControlName="formadepago">
+                        <option value="No comento">No comento</option>
+                        <option value="Credito">Credito</option>
+                        <option value="Infonavit">Infonavit</option>
+                        <option value="Fovissste">Fovissste</option>
+                        <option value="Bancario">Bancario</option>
+                        <option value="Recursos propios">Recursos propios</option>
+                        <option value="Crédito B. y Recursos propios">Crédito B. y Recursos propios</option>
+                        <option value="Cofinavit">Cofinavit</option>
+                        <option value="Infonavit Mancomunado">Infonavit Mancomunado</option>
+                        <option value="Fovissste para todos">Fovissste para todos</option>
+                        <option value="ISSFAM">ISSFAM</option>
+                        <option value="Infonavit y Recursos Propios">Infonavit y Recursos Propios</option>
+                        <option value="Fovissste y Recursos Propios">Fovissste y Recursos Propios</option>
+                        <option value="CFE">CFE</option>
+                        <option value="Issemym">Issemym</option>
+                        <option value="SOFOM">SOFOM</option>
+                        <option value="HIR Casa">HIR Casa</option>
+                        <option value="ICA (Prestamos y Financiamiento)">ICA (Prestamos y Financiamiento)</option>
+                        <option value="IMSS">IMSS</option>
+                        <option value="Contado">Contado</option>
+                    </select>
+                    <div *ngIf="submitted && f['formadepago'].errors">
+                        <mat-error *ngIf="f['formadepago'].errors['required']">Este campo es obligatorio</mat-error>
+                    </div>
+                </mat-form-field>
+            </mat-grid-tile>
+        </mat-grid-list>
+
+        <br>
+
+        <mat-grid-list [cols]="breakpoint" rowHeight="2:0.5" (window:resize)="onResize($event)">
+            <mat-grid-tile>
+                <mat-form-field>
+                    <mat-label>Monto</mat-label>
+                    <input type="number" matinput matNativeControl formControlName="montocliente">
+                    <div *ngIf="submitted && f['montocliente'].errors">
+                        <mat-error *ngIf="f['montocliente'].errors['required']">Este campo es obligatorio</mat-error>
+                    </div>
+                </mat-form-field>
+            </mat-grid-tile>
+            <mat-grid-tile>
+                <mat-form-field>
+                    <mat-label>Linea de negocio</mat-label>
+                    <select matSelect matNativeControl formControlName="lineanegocio">
+                        <option value="No comento">No comento</option>
+                        <option value="Pre-Venta">Pre-Venta</option>
+                        <option value="Corretaje">Corretaje</option>
+                        <option value="Recuperada">Recuperada</option>
+                        <option value="Remate">Remate</option>
+                        <option value="Rentas">Rentas</option>
+                        <option value="Inversión">Inversión</option>
+                    </select>
+                    <div *ngIf="submitted && f['lineanegocio'].errors">
+                        <mat-error *ngIf="f['lineanegocio'].errors['required']">Este campo es obligatorio</mat-error>
+                    </div>
+                </mat-form-field>
+            </mat-grid-tile>
+            <mat-grid-tile>
+                <mat-form-field>
+                    <mat-label> Tipo de propiedad</mat-label>
+                    <select matSelect matNativeControl formControlName="tipopropiedad">
+                        <option value="No comento">No comento</option>
+                        <option value="Casa">Casa</option>
+                        <option value="Departamento">Departamento</option>
+                        <option value="Local">Local</option>
+                        <option value="Oficina">Oficina</option>
+                        <option value="Terreno">Terreno</option>
+                        <option value="Pool de rentas">Pool de rentas</option>
+                    </select>
+                    <div *ngIf="submitted && f['tipopropiedad'].errors">
+                        <mat-error *ngIf="f['tipopropiedad'].errors['required']">Este campo es obligatorio</mat-error>
+                    </div>
+                </mat-form-field>
+            </mat-grid-tile>
+            <mat-grid-tile>
+                <mat-form-field>
+                    <mat-label>Rango de precios</mat-label>
+                    <select matSelect matNativeControl formControlName="rangoprecios">
+                        <option value="0">0</option>
+                        <option value="$1 - $299,999">$1 - $299,999</option>
+                        <option value="$300,000 - $599,999">$300,000 - $599,999</option>
+                        <option value="$600,000 - $999,999">$600,000 - $999,999</option>
+                        <option value="$1'000,000 - $1'499,999">$1'000,000 - $1'499,999</option>
+                        <option value=">$1'500,000">&gt;$1'500,000</option>
+                    </select>
+                    <div *ngIf="submitted && f['rangoprecios'].errors">
+                        <mat-error *ngIf="f['rangoprecios'].errors['required']">Este campo es obligatorio</mat-error>
+                    </div>
+                </mat-form-field>
+            </mat-grid-tile>
+        </mat-grid-list>
+
+        <br>
+
+    <mat-grid-list cols="2" rowHeight="3:0.5">
+        <mat-grid-tile>
+            <mat-form-field >
+                <mat-label>Notas</mat-label>
+                <textarea matInput matNativeControl formControlName="notas"
+                    placeholder="Ejemplo: El cliente se contacto por medio de... para solicitar info"></textarea>
+                <div *ngIf="submitted && f['notas'].errors">
+                    <mat-error *ngIf="f['notas'].errors['required']">Este campo es obligatorio</mat-error>
+                </div>
+            </mat-form-field>
+        </mat-grid-tile>
+    </mat-grid-list>
+
+    <br>
+
+        <button routerLink="/cliente" class="btn btn-danger btn-block">
+            Cancelar
+        </button>&nbsp;
+        <button type="submit" class="btn btn-primary btn-block">
+            Guardar
+        </button>
+
+    </form>
+</div>

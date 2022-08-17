@@ -1,0 +1,145 @@
+<br>
+<h1>Registro de Cita</h1>
+<mat-list class="fs-6" >
+    <mat-list-item style="color: rgb(238, 24, 24);">*Para requerir apoyo juridico necesitas confirmar asistencia con los abogados</mat-list-item>
+    <mat-list-item style="color: rgb(238, 24, 24);">*Para requerir apoyo coordinador necesitas confirmar asistencia y disponibilidad</mat-list-item>
+    <mat-list-item style="color: rgb(238, 24, 24);">*Para requerir apoyo con llaves, necesitas confirmar con gerencia para verificar si nadie mas las tiene</mat-list-item>
+</mat-list>
+<br>
+<div class="container">
+    <form [formGroup]="citaForm" (ngSubmit)="edit ? updateCita() : submitCita()">
+        <mat-grid-list [cols]="breakpoint" rowHeight="2:0.5" (window:resize)="onResize($event)">
+            <mat-grid-tile>
+                <mat-form-field>
+                    <mat-label>Tipo de Cita</mat-label>
+                    <select matSelect matNativeControl formControlName="tipodecita">
+                        <option value="Virtual" selected>Virtual</option>
+                        <option value="En propiedad">En propiedad</option>
+                        <option value="En notaria">En notaria</option>
+                        <option value="En oficina">En oficina</option>
+                    </select>
+                    <div *ngIf="submitted && f['tipodecita'].errors">
+                        <mat-error *ngIf="f['tipodecita'].errors['required']">Este campo es obligatorio</mat-error>
+                    </div>
+                </mat-form-field>
+            </mat-grid-tile>
+            <mat-grid-tile>
+                <mat-form-field>
+                    <mat-label>Asunto de la cita</mat-label>
+                    <input matInput matNativeControl formControlName="titulo">
+                    <div *ngIf="submitted && f['titulo'].errors">
+                        <mat-error *ngIf="f['titulo'].errors['required']">Este campo es obligatorio</mat-error>
+                    </div>
+                </mat-form-field>
+            </mat-grid-tile>
+            <mat-grid-tile>
+                <mat-form-field>
+                    <mat-label>Cliente</mat-label>
+                    <select matSelect matNativeControl formControlName="cliente">
+                        <option value="" selected></option>
+                        <option *ngFor="let cliente of clientesAll" value="{{cliente.id}}">
+                            {{cliente.nombre}} {{cliente.apellidos}}
+                        </option>
+                    </select>
+                    <div *ngIf="submitted && f['cliente'].errors">
+                        <mat-error *ngIf="f['cliente'].errors['required']">Este campo es obligatorio</mat-error>
+                    </div>
+                </mat-form-field>
+            </mat-grid-tile>
+
+        </mat-grid-list>
+
+        <br>
+
+        <mat-grid-list [cols]="breakpoint" rowHeight="2:0.5" (window:resize)="onResize($event)">
+            <mat-grid-tile>
+                <mat-form-field>
+                    <mat-label>Fecha</mat-label>
+                    <input matInput [matDatepicker]="picker" formControlName="fecha">
+                    <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                    <mat-datepicker #picker></mat-datepicker>
+                    <div *ngIf="submitted && f['fecha'].errors">
+                        <mat-error *ngIf="f['fecha'].errors['required']">Este campo es obligatorio</mat-error>
+                    </div>
+                </mat-form-field>
+            </mat-grid-tile>
+            <mat-grid-tile>
+                <mat-form-field>
+                    <mat-label>Hora</mat-label>
+                    <input matInput [ngxTimepicker]="time" formControlName="hora">
+                    <ngx-material-timepicker #time [format]="12"></ngx-material-timepicker>
+                    <div *ngIf="submitted && f['hora'].errors">
+                        <mat-error *ngIf="f['hora'].errors['required']">Este campo es obligatorio</mat-error>
+                    </div>
+                </mat-form-field>
+            </mat-grid-tile>
+            <mat-grid-tile>
+                <mat-form-field>
+                    <mat-label>Estado</mat-label>
+                    <select matSelect matNativeControl formControlName="direccion1" (change)="changeEstado($event)">
+
+                        <option *ngFor="let estado of Estados" value="{{estado.estado}}">{{estado.estado}}</option>
+                    </select>
+                    <div *ngIf="submitted && f['direccion1'].errors">
+                        <mat-error *ngIf="f['direccion1'].errors['required']">Este campo es obligatorio</mat-error>
+                    </div>
+                </mat-form-field>
+            </mat-grid-tile>
+
+
+        </mat-grid-list>
+        <br>
+        <mat-grid-list [cols]="breakpoint" rowHeight="1:0.5" (window:resize)="onResize($event)">
+            <mat-grid-tile>
+                <mat-form-field>
+                    <mat-label>Municipio/Delegación</mat-label>
+                    <select matSelect matNativeControl formControlName="direccion2">
+
+                        <option *ngFor="let mun of municipio" value="{{mun.name}}">{{mun.name}}</option>
+                    </select>
+                    <div *ngIf="submitted && f['direccion2'].errors">
+                        <mat-error *ngIf="f['direccion2'].errors['required']">Este campo es obligatorio</mat-error>
+                    </div>
+                </mat-form-field>
+            </mat-grid-tile>
+            <mat-grid-tile>
+                <mat-list>
+                    <mat-list-item> <mat-checkbox formControlName="apoyos" value="Apoyo Juridico|">Apoyo Juridico</mat-checkbox> </mat-list-item>
+                    <mat-list-item> <mat-checkbox formControlName="apoyos1" value="Apoyo Coordinador|">Apoyo Coordinador</mat-checkbox> </mat-list-item>
+                    <mat-list-item> <mat-checkbox formControlName="apoyos2" value="Apoyo Llaves">Apoyo Llaves</mat-checkbox> </mat-list-item>
+                   </mat-list>
+                <!-- <mat-form-field>
+                    <mat-label>Apoyo Juridico</mat-label>
+                    <input matCheckbox matNativeControl formControlName="apoyos" value="Apoyo Juridico" type="checkbox">
+                </mat-form-field>
+                <mat-form-field>
+                    <mat-label>Apoyo Coordinador</mat-label>
+                        <input matCheckbox matNativeControl formControlName="apoyos1" value="Apoyo Coordinador" type="checkbox">
+                    </mat-form-field>
+                    <mat-form-field>
+                        <mat-label>Apoyo Llaves</mat-label>
+                        <input matCheckbox matNativeControl formControlName="apoyos2" value="Apoyo Llaves" type="checkbox">
+                    </mat-form-field> -->
+            </mat-grid-tile>
+            <mat-grid-tile>
+                <mat-form-field>
+                    <mat-label>Notas</mat-label>
+                    <textarea matNativeControl rows="4" formControlName="descripcion"
+                        placeholder="Ejemplo: Se revisará el expediente"></textarea>
+                    <div *ngIf="submitted && f['descripcion'].errors">
+                        <mat-error *ngIf="f['descripcion'].errors['required']">Este campo es obligatorio</mat-error>
+                    </div>
+                </mat-form-field>
+            </mat-grid-tile>
+
+        </mat-grid-list>
+
+        <button routerLink="/cita" class="btn btn-danger btn-block">
+            Cancelar
+        </button>&nbsp;
+        <button type="submit" class="btn btn-primary btn-block">
+            Guardar
+        </button>
+
+    </form>
+</div>

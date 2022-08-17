@@ -1,0 +1,177 @@
+&nbsp;
+<h1>Formulario para Usuarios</h1>
+&nbsp;
+&nbsp;
+&nbsp;
+<form (submit)="edit ? updateUsuario() : submitUsuario()" class="formCliente">
+    <!-- <div class="row g-2">
+                <div class="col-md-3">
+                    <label for="clasificacion">Via de Contacto</label>
+                      <select class="form-select" id="clasificacion" [(ngModel)]="usuario.clasificacion" name="clasificacion" required>
+                        <option value="Llamada entrante -Celular" selected>Llamada entrante -Celular</option>
+                        <option value="Llamada entrante -Oficina">Llamada entrante -Oficina</option>
+                        <option value="Llamada al contacto">Llamada al contacto</option>
+                        <option value="Correo Electronico">Correo Electronico</option>
+                        <option value="Whatsapp">Whatsapp</option>
+                        <option value="Facebook">Facebook</option>
+                        <option value="Página Web">Página Web</option>
+                        <option value="Inmuebles24">Inmuebles24</option>
+                        <option value="Vivanuncios">Vivanuncios</option>
+                        <option value="Lamudi">Lamudi</option>
+                        <option value="Otros">Otros</option>
+                      </select> 
+                  </div>
+                <div class="col-md-3">
+                    <label for="estado">Clasificación/Estatus del contacto</label>
+                    <select class="form-select" name="estado" id="estado" required [(ngModel)]="cliente.estado" name="estado">
+                        <option value="Prospecto">Prospecto</option>
+                        <option value="Cliente">Cliente</option>
+                        <option value="Cita">Cita</option>
+                        <option value="Seguimiento">Seguimiento</option>
+                        <option value="Rechazado">Rechazado</option>
+                        <option value="Lista negra">Lista negra</option>
+                        <option value="Negociación">Negociación</option>
+                        <option value="No interesado">No interesado</option>
+                        <option value="Asesor inmobiliario">Asesor inmobiliario</option>
+                        <option value="Cambio de propiedad">Cambio de propiedad</option>
+                        <option value="Venta concretada">Venta concretada</option>
+                        <option value="Enfriado">Enfriado</option>
+                        <option value="Otros">Otros</option>
+                    </select>
+                </div>
+                <div class="col-md-3">
+                        <label for="fechaentrada">Fecha de primer contacto</label>
+                        <input required type="date" class="form-control" name="fechaentrada" id="fechaentrada" min="2022-01-01" placeholder="Fecha de entrada" [(ngModel)]="cliente.fechaentrada">
+                </div>
+                <div class="col-md-3">
+                    <label for="edad">Edad</label>
+                    <input required type="number" class="form-control" name="edad" id="edad" min="18" placeholder="18" value="18" [(ngModel)]="cliente.edad">
+                </div>
+              </div>
+              &nbsp;
+
+              <div class="row g-2">
+                <div class="col-md-2">
+                    <label for="nombre">Nombre</label>
+                    <input required type="text" class="form-control" name="nombre" id="nombre" [(ngModel)]="cliente.nombre">
+                </div>
+                <div class="col-md-3">
+                    <label for="apellidos">Apellidos</label>
+                    <input required type="text" class="form-control" name="apellidos" id="apellidos"  [(ngModel)]="cliente.apellidos">
+                </div>
+                <div class="col-md-3">
+                    <label for="correo">Correo</label>
+                    <input required type="mail" class="form-control" name="correo" id="correo" [(ngModel)]="cliente.correo">
+                </div>
+                <div class="col-md">
+                    <label for="telefono1">Telefono Celular</label>
+                    <input required type="number" class="form-control" name="telefono1" id="telefono1" min="0" [(ngModel)]="cliente.telefono1">
+                </div>
+                <div class="col-md">
+                    <label for="telefono2">Telefono Casa</label>
+                    <input required type="number" class="form-control" name="telefono2" id="telefono2" min="0" [(ngModel)]="cliente.telefono2">
+                </div>
+              </div>
+          &nbsp;
+        
+          <div class="row g-2">
+            <div class="col-md-3">
+                <label for="departamento">Medio Publicitario</label>
+                <select class="form-select" name="departamento" id="departamento" required [(ngModel)]="cliente.departamento">
+                                             
+                    <option value="Inmuebles24">Inmuebles24</option>                               
+                    <option value="Vivanuncios">Vivanuncios</option>                              
+                    <option value="Lamudi">Lamudi</option>                               
+                    <option value="Facebook">Facebook</option>                              
+                    <option value="Cliente">Cliente</option>                               
+                    <option value="Whatsapp">Whatsapp</option>                              
+                    <option value="Instagram">Instagram</option>                              
+                    <option value="Lona">Lona</option>                              
+                    <option value="Referido">Referido</option>                              
+                    <option value="Gallardete">Gallardete</option>                              
+                    <option value="Página Web">Página Web</option>                              
+                    <option value="Otros">Otros</option>
+                </select>
+              </div>
+
+            <div class="col-md-3">
+                <label for="tipoanuncio">Detalle del medio Publicitario</label>
+                <input required="" type="text" class="form-control" name="tipoanuncio" id="tipoanuncio" [(ngModel)]="cliente.tipoanuncio">
+            </div>
+            <div class="col-md-3">
+                <label for="formadepago">Forma de pago</label>
+                <select class="form-select" name="formadepago" id="formadepago" required [(ngModel)]="cliente.formadepago">                      
+                    <option value="No comento">No comento</option>                         
+                    <option value="Credito">Credito</option>                        
+                    <option value="Infonavit">Infonavit</option>                          
+                    <option value="Fovissste">Fovissste</option>                        
+                    <option value="Bancario">Bancario</option>                         
+                    <option value="Recursos propios">Recursos propios</option>                         
+                    <option value="Crédito B. y Recursos propios">Crédito B. y Recursos propios</option>                          
+                    <option value="Cofinavit">Cofinavit</option>                           
+                    <option value="Infonavit Mancomunado">Infonavit Mancomunado</option>                           
+                    <option value="Fovissste para todos">Fovissste para todos</option>                           
+                    <option value="ISSFAM">ISSFAM</option>                          
+                    <option value="Infonavit y Recursos Propios">Infonavit y Recursos Propios</option>                           
+                    <option value="Fovissste y Recursos Propios">Fovissste y Recursos Propios</option>                           
+                    <option value="CFE">CFE</option>                          
+                    <option value="Issemym">Issemym</option>                            
+                    <option value="SOFOM">SOFOM</option>                            
+                    <option value="HIR Casa">HIR Casa</option>                            
+                    <option value="ICA (Prestamos y Financiamiento)">ICA (Prestamos y Financiamiento)</option>                            
+                    <option value="IMSS">IMSS</option>                            
+                    <option value="Contado">Contado</option>
+                </select>
+            </div>
+            <div class="col-md-3">
+                <label for="formadepago">Monto</label> 
+                <input type="number" class="form-control" name="formadepago" id="formadepago" min="0" [(ngModel)]="cliente.formadepago">
+            </div>
+          </div>
+          &nbsp;
+          <div class="row g-2">
+            <div class="col-md-3">
+                <label for="lineanegocio">Linea de negocio</label>
+                <select class="form-select" name="lineanegocio" id="lineanegocio" required [(ngModel)]="cliente.lineanegocio">
+                    <option value="No comento">No comento</option>
+                    <option value="Pre-Venta">Pre-Venta</option>
+                    <option value="Corretaje">Corretaje</option>
+                    <option value="Recuperada">Recuperada</option>
+                    <option value="Remate">Remate</option>
+                    <option value="Rentas">Rentas</option>
+                    <option value="Inversión">Inversión</option>
+                </select>
+              </div>
+            <div class="col-md-3">
+                <label for="tipopropiedad"> Tipo de propiedad</label>
+                <select class="form-select  " name="tipopropiedad" id="tipopropiedad" required [(ngModel)]="cliente.tipopropiedad">
+                    <option value="No comento">No comento</option>
+                    <option value="Casa">Casa</option>
+                    <option value="Departamento">Departamento</option>
+                    <option value="Local">Local</option>
+                    <option value="Oficina">Oficina</option>
+                    <option value="Terreno">Terreno</option>
+                    <option value="Pool de rentas">Pool de rentas</option>
+                </select>
+            </div>
+            <div class="col-md-3">
+                    <label for="rangoprecios">Rango de precios</label>
+                    <select class="form-select" name="rangoprecios" id="rangoprecios" [(ngModel)]="cliente.rangoprecios">
+                        <option value="0">0</option>
+                                                    <option value="$1 - $299,999">$1 - $299,999</option>
+                                                    <option value="$300,000 - $599,999">$300,000 - $599,999</option>
+                                                    <option value="$600,000 - $999,999">$600,000 - $999,999</option>
+                                                    <option value="$1'000,000 - $1'499,999">$1'000,000 - $1'499,999</option>
+                                                    <option value=">$1'500,000">&gt;$1'500,000</option>
+                                            </select>
+              </div>
+              <div class="col-md-3">
+                <label for="notas">Notas</label>
+                <textarea required="" type="text" class="form-control"  [(ngModel)]="cliente.notas" name="notas" id="notas" placeholder="Ejemplo: El cliente se contacto por medio de... para solicitar info"></textarea>
+          </div>
+          </div> -->
+    <br>
+    <button type="submit" class="btn btn-primary btn-block">
+        Guardar
+    </button>
+</form>

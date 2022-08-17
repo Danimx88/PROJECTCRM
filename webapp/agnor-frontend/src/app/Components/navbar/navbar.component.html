@@ -1,0 +1,48 @@
+<nav class="navbar navbar-expand-lg navbar-dark bg-info">
+  <div class="container-fluid">
+    <a class="navbar-brand ">
+      <h2>AGNOR</h2>
+    </a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarColor01"
+      aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarColor01">
+      <ul class="navbar-nav me-auto">
+        <li class="nav-item">
+          <a class="nav-link" routerLink="" routerLinkActive="active">Inicio</a>
+        </li>
+        <li class="nav-item" *ngIf="isAuthenticated()">
+          <a class="nav-link" routerLink="/cliente" routerLinkActive="active">Clientes</a>
+        </li>
+        <li class="nav-item" *ngIf="isAuthenticated() && isAdmin()" >
+          <a class="nav-link" routerLink="/usuario" routerLinkActive="active">Usuarios</a>
+        </li>
+        <li class="nav-item" *ngIf="isAuthenticated()">
+          <a class="nav-link" routerLink="/cita" routerLinkActive="active">Citas</a>
+        </li>
+        <li class="nav-item" *ngIf="isAuthenticated()==false">
+          <a class="nav-link" routerLink="/login">Asesores</a>
+        </li>
+        <li class="nav-item" *ngIf="isAuthenticated()">
+          <a class="nav-link" routerLink="" (click)="logout()">Cerrar Sesión</a>
+        </li>
+      </ul>
+      <div class="dropdown d-flex" *ngIf="isAuthenticated()">
+        <a class="navbar-brand" href="">
+          <img src="../../../assets/genericavatar.jpg" alt="user_picture" width="60" height="48">
+        </a>&nbsp;
+        <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1"
+          data-bs-toggle="dropdown" aria-expanded="false">
+          <span class="badge bg-secondary"></span> Usuario : {{usuarioActual.name}}
+        </button>
+        <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+          <li><a class="dropdown-item" href="#">Action</a></li>
+          <li><a class="dropdown-item" href="#">Another action</a></li>
+          <li><a class="dropdown-item" href="#">Something else here</a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</nav>

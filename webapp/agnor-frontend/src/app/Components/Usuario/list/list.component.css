@@ -1,0 +1,145 @@
+
+  #userTabla{
+    width: 100%;
+    font-family: Arial, Helvetica, sans-serif !important;
+    color: black !important;
+    text-align: center;
+   }
+   .mat-header-cell {
+    color: rgb(0 0 0) !important;
+    font-weight: bold !important;
+    text-align: center;
+   
+}
+   .mat-column-id {
+     word-wrap: break-word !important;
+     white-space: unset !important;
+     flex: 0 0 10% !important;
+     width: 10% !important;
+     overflow-wrap: break-word;
+     word-wrap: break-word;
+   
+     word-break: break-word;
+   
+     -ms-hyphens: auto;
+     -moz-hyphens: auto;
+     -webkit-hyphens: auto;
+     hyphens: auto;
+   }
+   
+   .mat-column-nombre {
+     word-wrap: break-word !important;
+     white-space: unset !important;
+     flex: 0 0 20% !important;
+     width: 20% !important;
+     overflow-wrap: break-word;
+     word-wrap: break-word;
+   
+     word-break: break-word;
+   
+     -ms-hyphens: auto;
+     -moz-hyphens: auto;
+     -webkit-hyphens: auto;
+     hyphens: auto;
+     text-align: left;
+   }
+   
+   .mat-column-correo {
+     word-wrap: break-word !important;
+     white-space: unset !important;
+     flex: 0 0 15% !important;
+     width: 15% !important;
+     overflow-wrap: break-word;
+     word-wrap: break-word;
+   
+     word-break: break-word;
+   
+     -ms-hyphens: auto;
+     -moz-hyphens: auto;
+     -webkit-hyphens: auto;
+     hyphens: auto;
+   }
+   
+   .mat-column-usuario {
+     word-wrap: break-word !important;
+     white-space: unset !important;
+     flex: 0 0 5% !important;
+     width: 5% !important;
+     overflow-wrap: break-word;
+     word-wrap: break-word;
+   
+     word-break: break-word;
+   
+     -ms-hyphens: auto;
+     -moz-hyphens: auto;
+     -webkit-hyphens: auto;
+     hyphens: auto;
+   }
+   
+   .mat-column-edad {
+     word-wrap: break-word !important;
+     white-space: unset !important;
+     flex: 0 0 10% !important;
+     width: 10% !important;
+     overflow-wrap: break-word;
+     word-wrap: break-word;
+   
+     word-break: break-word;
+   
+     -ms-hyphens: auto;
+     -moz-hyphens: auto;
+     -webkit-hyphens: auto;
+     hyphens: auto;
+   }
+   .mat-column-ultimasesion {
+    word-wrap: break-word !important;
+    white-space: unset !important;
+    flex: 0 0 20% !important;
+    width: 20% !important;
+    overflow-wrap: break-word;
+    word-wrap: break-word;
+  
+    word-break: break-word;
+  
+    -ms-hyphens: auto;
+    -moz-hyphens: auto;
+    -webkit-hyphens: auto;
+    hyphens: auto;
+    text-align: left;
+  }
+  .mat-column-telefono {
+    word-wrap: break-word !important;
+    white-space: unset !important;
+    flex: 0 0 10% !important;
+    width: 10% !important;
+    overflow-wrap: break-word;
+    word-wrap: break-word;
+  
+    word-break: break-word;
+  
+    -ms-hyphens: auto;
+    -moz-hyphens: auto;
+    -webkit-hyphens: auto;
+    hyphens: auto;
+  }
+
+  .mat-column-operaciones {
+    word-wrap: break-word !important;
+    white-space: unset !important;
+    flex: 0 0 10% !important;
+    width: 10% !important;
+    overflow-wrap: break-word;
+    word-wrap: break-word;
+  
+    word-break: break-word;
+  
+    -ms-hyphens: auto;
+    -moz-hyphens: auto;
+    -webkit-hyphens: auto;
+    hyphens: auto;
+  }
+
+  ::ng-deep .mat-paginator-container{
+    font-family: Arial, Helvetica, sans-serif !important;
+    color: rgb(0 0 0) !important
+  }

@@ -1,0 +1,46 @@
+import { AfterViewInit, Component, OnDestroy, OnInit, ViewChild } from '@angular/core';
+import { ClienteService } from "../cliente.service";
+import { Cliente } from '../interface/cliente.interface';
+import {Subject} from 'rxjs';
+import { HttpClient } from "@angular/common/http";
+import { faPen, faTrash } from '@fortawesome/free-solid-svg-icons';
+import {MatPaginator} from '@angular/material/paginator';
+import {MatTableDataSource} from '@angular/material/table';
+import { Page } from 'src/app/core/models/page.model';
+import { PageRequest } from 'src/app/core/models/page-request.model';
+import { take } from 'rxjs/operators';
+
+
+@Component({
+  selector: 'app-list',
+  templateUrl: './list.component.html',
+  styleUrls: ['./list.component.css']
+})
+export class ClienteListComponent implements OnInit{
+  public currentPage!: Page<Cliente>;
+  faPen = faPen;
+  faTrash = faTrash
+
+  constructor(
+    private clienteService: ClienteService
+  ) {}
+
+
+  ngOnInit(): void {
+    this.fetchPageOfUsers();
+  }
+
+  public nextPage(): void {
+    this.fetchPageOfUsers(this.currentPage.next);
+  }
+
+  public prevPage(): void {
+    this.fetchPageOfUsers(this.currentPage.previous);
+  }
+
+  private fetchPageOfUsers(pageRequest?: PageRequest): void {
+    this.clienteService.findAll(pageRequest)
+      .pipe(take(1))
+      .subscribe(page => this.currentPage = page);
+  }
+}
